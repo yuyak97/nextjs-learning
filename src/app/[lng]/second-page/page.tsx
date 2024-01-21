@@ -1,3 +1,5 @@
+"use client"
+
 import { DefaultPageProps } from "@/types/page-props"
 import Link from "next/link"
 
