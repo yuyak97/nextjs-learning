@@ -4,6 +4,7 @@ import { languages } from "../i18n/settings"
 import { Footer } from "@/components/common/footer"
 import { Providers } from "@/components/app/providers"
 import Header from "@/components/common/header"
+import "@/styles/globals.css"
 
 export async function generateStaticParams(): Promise<{ lng: string }[]> {
   return languages.map((lng) => ({ lng }))
