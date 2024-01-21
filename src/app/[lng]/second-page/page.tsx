@@ -1,7 +1,7 @@
 import { DefaultPageProps } from "@/types/page-props"
 import Link from "next/link"
 
-const Page: React.FC<DefaultPageProps> = ({ params: { lng } }) => {
+const SecondPage: React.FC<DefaultPageProps> = ({ params: { lng } }) => {
   return (
     <>
       <h1>Hi from second page!</h1>
@@ -9,3 +9,5 @@ const Page: React.FC<DefaultPageProps> = ({ params: { lng } }) => {
     </>
   )
 }
+
+export default SecondPage

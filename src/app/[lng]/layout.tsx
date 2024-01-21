@@ -1,7 +1,9 @@
 import { ReactNode } from "react"
 import { dir } from "i18next"
 import { languages } from "../i18n/settings"
-import { Footer } from "@/components/footer"
+import { Footer } from "@/components/common/footer"
+import { Providers } from "@/components/app/providers"
+import Header from "@/components/common/header"
 
 export async function generateStaticParams(): Promise<{ lng: string }[]> {
   return languages.map((lng) => ({ lng }))
@@ -17,11 +19,13 @@ const RootLayout: React.FC<RootLayoutProps> = ({
   params: { lng },
 }) => {
   return (
-    <html lang={lng} dir={dir(lng)}>
-      <head />
+    <html suppressHydrationWarning lang={lng} dir={dir(lng)}>
       <body>
-        {children}
-        <Footer lng={lng} />
+        <Providers>
+          <Header />
+          {children}
+          <Footer lng={lng} />
+        </Providers>
       </body>
     </html>
   )
