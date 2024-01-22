@@ -1,3 +1,13 @@
+## DB
+
+```bash
+# access db
+docker exec -it book-db psql -U postgres book
+
+# open prisma studio
+npx prisma studio
+```
+
 https://github.com/i18next/next-app-dir-i18next-example-ts/tree/main/app/%5Blng%5D
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: book-app
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - node_modules:/app/node_modules
+    depends_on:
+      - db
+  db:
+    build: local/db
+    container_name: book-db
+    environment:
+      TZ: Europe/Paris
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: book
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=en_US.UTF-8"
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  db:
+  node_modules:
