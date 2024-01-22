@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { fallbackLng, languages } from "../i18n/settings"
-import { DefaultPageProps } from "@/types/page-props"
+import { DefaultPageProps } from "@/types/page-props.types"
 import { useTranslation } from "../i18n/client"
 
 const Page: React.FC<DefaultPageProps> = ({ params: { lng } }) => {

@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useTranslation } from "@/app/i18n/client"
 import { useState } from "react"
-import { DefaultPageProps } from "@/types/page-props"
+import { DefaultPageProps } from "@/types/page-props.types"
 
 const Page: React.FC<DefaultPageProps> = ({ params: { lng } }) => {
   const { t } = useTranslation(lng, "client-page")
