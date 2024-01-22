@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
+import { ThemeMode } from "@/enums/theme.enum"
 
 export const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false)
@@ -9,11 +10,15 @@ export const ThemeSwitch = () => {
 
   useEffect(() => {
     setMounted(true)
+
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
       .matches
-      ? "dark"
-      : "light"
-    setTheme(systemTheme)
+      ? ThemeMode.DARK
+      : ThemeMode.LIGHT
+
+    if (theme === ThemeMode.SYSTEM) {
+      setTheme(systemTheme)
+    }
   }, [setTheme])
 
   if (!mounted) {
