@@ -1,5 +1,3 @@
-// データベースに接続するためのクライアントをインポート
-
 import prisma from "@/lib/prisma"
 
 export default async function Home() {
