@@ -19,12 +19,15 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
+    "@next-auth/prisma-adapter": "^0.4.4-canary.81",
     "@prisma/client": "^5.8.1",
     "accept-language": "^3.0.18",
+    "google-auth-library": "^9.4.2",
     "i18next": "^23.7.17",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-resources-to-backend": "^1.2.0",
     "next": "14.0.4",
+    "next-auth": "^4.24.5",
     "next-i18next": "^15.2.0",
     "next-themes": "^0.2.1",
     "react": "^18",
@@ -33,6 +36,7 @@
     "react-i18next": "^14.0.1"
   },
   "devDependencies": {
+    "@types/google-one-tap": "^1.2.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -44,6 +48,7 @@
     "lint-staged": "^15.2.0",
     "postcss": "^8",
     "prettier": "^3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "prisma": "^5.8.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
