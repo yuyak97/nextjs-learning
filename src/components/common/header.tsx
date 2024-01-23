@@ -1,7 +1,9 @@
+"use client"
+
 import React from "react"
 import { ThemeSwitch } from "./themeSwitch"
 
-const Header = async () => {
+const Header = () => {
   return (
     <div>
       <p>header</p>
