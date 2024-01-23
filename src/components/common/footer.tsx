@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Trans } from "react-i18next/TransWithoutContext"
 import { languages } from "@/app/i18n/settings"
 import { useTranslation } from "@/app/i18n/client"
+import { useSession } from "next-auth/react"
 
 type Props = {
   lng: string
@@ -11,6 +12,8 @@ type Props = {
 
 export const Footer: React.FC<Props> = ({ lng }) => {
   const { t } = useTranslation(lng)
+  const { data } = useSession()
+  console.log(data)
   return (
     <footer style={{ marginTop: 50 }}>
       <Trans i18nKey="languageSwitcher" t={t}>
