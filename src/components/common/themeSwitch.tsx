@@ -38,7 +38,7 @@ export const ThemeSwitch = () => {
           />
           {/* Line */}
           <div
-            className={`block h-8 w-14 rounded-full shadow-md transition ${theme === ThemeMode.DARK ? "bg-gradient-to-r from-indigo-500 to-purple-600" : "bg-gradient-to-r from-yellow-400 to-orange-500"}`}
+            className={`block h-8 w-14 rounded-full transition ${theme === ThemeMode.DARK ? "bg-gradient-to-r from-indigo-500 to-purple-600" : "bg-gradient-to-r from-yellow-400 to-orange-500"}`}
           ></div>
           {/* Dot with Icon */}
           <div
