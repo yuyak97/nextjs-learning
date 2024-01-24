@@ -1,9 +1,8 @@
 "use client"
 
 import React from "react"
-import { ThemeSwitch } from "./themeSwitch"
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <div>
       <p>header</p>

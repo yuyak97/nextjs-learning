@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useTheme } from "next-themes"
 import { ThemeMode } from "@/enums/theme.enum"
-import ClientOnly from "./client-only"
+import ClientOnly from "./clientOnly"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLightbulb, faPowerOff } from "@fortawesome/free-solid-svg-icons"
 

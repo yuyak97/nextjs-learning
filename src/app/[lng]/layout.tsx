@@ -6,7 +6,7 @@ import { Providers } from "@/components/app/providers"
 import Header from "@/components/common/header"
 import "@/styles/globals.css"
 import Script from "next/script"
-import OneTapComponent from "@/components/common/one-tap"
+import OneTapComponent from "@/components/common/oneTap"
 
 export async function generateStaticParams(): Promise<{ lng: string }[]> {
   return languages.map((lng) => ({ lng }))
