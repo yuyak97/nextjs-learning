@@ -7,8 +7,6 @@ const Header = () => {
   return (
     <div>
       <p>header</p>
-
-      <ThemeSwitch />
     </div>
   )
 }

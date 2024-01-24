@@ -5,6 +5,7 @@ import { Trans } from "react-i18next/TransWithoutContext"
 import { languages } from "@/app/i18n/settings"
 import { useTranslation } from "@/app/i18n/client"
 import { useSession } from "next-auth/react"
+import { ThemeSwitch } from "./themeSwitch"
 
 type Props = {
   lng: string
@@ -21,7 +22,7 @@ export const Footer: React.FC<Props> = ({ lng }) => {
       </Trans>
       {languages
         .filter((l) => lng !== l)
-        .map((l, index) => {
+        .map((l: string, index) => {
           return (
             <span key={l}>
               {index > 0 && " or "}
@@ -29,6 +30,7 @@ export const Footer: React.FC<Props> = ({ lng }) => {
             </span>
           )
         })}
+      <ThemeSwitch />
     </footer>
   )
 }

@@ -1,9 +1,9 @@
-"use client"
-
 import { useEffect } from "react"
 import { useTheme } from "next-themes"
 import { ThemeMode } from "@/enums/theme.enum"
 import ClientOnly from "./client-only"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLightbulb, faPowerOff } from "@fortawesome/free-solid-svg-icons"
 
 export const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme()
@@ -38,34 +38,28 @@ export const ThemeSwitch = () => {
           />
           {/* Line */}
           <div
-            className={`block h-8 w-14 rounded-full transition ${theme === ThemeMode.DARK ? "bg-purple-600" : "bg-sky-400"}`}
+            className={`block h-8 w-14 rounded-full shadow-md transition ${theme === ThemeMode.DARK ? "bg-gradient-to-r from-indigo-500 to-purple-600" : "bg-gradient-to-r from-yellow-400 to-orange-500"}`}
           ></div>
           {/* Dot with Icon */}
           <div
-            className={`dot absolute left-1 top-1 flex h-6 w-6 transform items-center justify-center rounded-full transition ${theme === ThemeMode.DARK ? "translate-x-full bg-blue-500" : "bg-yellow-400"}`}
+            className={`dot absolute left-1 top-1 flex h-6 w-6 transform items-center justify-center rounded-full shadow-md transition-all duration-300 ease-in-out ${theme === ThemeMode.DARK ? "translate-x-full bg-gray-800" : "bg-white"}`}
           >
             {theme === ThemeMode.DARK ? (
-              <svg
-                className="h-4 w-4 text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 15a5 5 0 100-10 5 5 0 000 10zM10 1.5a1 1 0 011-1V.5a1 1 0 112 0v1a1 1 0 011 1h1a1 1 0 110 2h-1a1 1 0 01-1 1 1 1 0 01-1 1V7a1 1 0 11-2 0V6a1 1 0 01-1-1 1 1 0 01-1-1H3a1 1 0 110-2h1a1 1 0 011-1z" />
-              </svg>
+              <FontAwesomeIcon
+                icon={faPowerOff}
+                className="h-4 w-4 text-yellow-300"
+              />
             ) : (
-              <svg
-                className="h-4 w-4 text-white"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 15a5 5 0 100-10 5 5 0 000 10z" />
-              </svg>
+              <FontAwesomeIcon
+                icon={faLightbulb}
+                className="h-4 w-4 text-gray-800"
+              />
             )}
           </div>
         </div>
         {/* Label */}
         <div className="ml-3 font-medium text-gray-700">
-          {theme === ThemeMode.DARK ? "Night Mode" : "Day Mode"}
+          {theme === ThemeMode.DARK ? "DARK Mode" : "LIGHT Mode"}
         </div>
       </label>
     </ClientOnly>
