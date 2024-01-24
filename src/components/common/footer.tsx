@@ -1,35 +1,24 @@
 "use client"
 
-import Link from "next/link"
-import { Trans } from "react-i18next/TransWithoutContext"
-import { languages } from "@/app/i18n/settings"
-import { useTranslation } from "@/app/i18n/client"
 import { useSession } from "next-auth/react"
 import { ThemeSwitch } from "./themeSwitch"
+import LanguageSelector from "./languageSelector"
 
 type Props = {
   lng: string
 }
 
 export const Footer: React.FC<Props> = ({ lng }) => {
-  const { t } = useTranslation(lng)
   const { data } = useSession()
-  console.log(data)
+
   return (
-    <footer style={{ marginTop: 50 }}>
-      <Trans i18nKey="languageSwitcher" t={t}>
-        Switch from <strong>{lng}</strong> to:{" "}
-      </Trans>
-      {languages
-        .filter((l) => lng !== l)
-        .map((l: string, index) => {
-          return (
-            <span key={l}>
-              {index > 0 && " or "}
-              <Link href={`/${l}`}>{l}</Link>
-            </span>
-          )
-        })}
+    <footer className="mt-12 rounded-lg bg-white p-4 shadow dark:bg-gray-800 md:flex md:items-center md:justify-between md:p-6">
+      <div className="flex items-center justify-between">
+        <span className="text-sm text-gray-500 dark:text-gray-400 sm:text-center">
+          © {new Date().getFullYear()} Your Brand™. All Rights Reserved.
+        </span>
+        <LanguageSelector lng={lng} />
+      </div>
       <ThemeSwitch />
     </footer>
   )
