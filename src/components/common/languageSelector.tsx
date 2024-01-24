@@ -13,12 +13,6 @@ const LanguageSelector: React.FC<Props> = ({ lng }) => {
 
   return (
     <div className="mt-4 md:mt-0">
-      <label
-        htmlFor="language-select"
-        className="mr-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-      >
-        Language:
-      </label>
       <select
         id="language-select"
         value={lng}

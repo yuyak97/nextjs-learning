@@ -5,7 +5,7 @@ import React from "react"
 const Header: React.FC = () => {
   return (
     <div>
-      <p>header</p>
+      <p>sampleapp</p>
     </div>
   )
 }

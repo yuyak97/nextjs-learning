@@ -26,16 +26,16 @@ export const ThemeSwitch = () => {
 
   return (
     <ClientOnly>
-      <label className="flex cursor-pointer items-center">
+      <div className="flex cursor-pointer items-center">
+        {/* Invisible Checkbox */}
+        <input
+          type="checkbox"
+          checked={theme === ThemeMode.DARK}
+          onChange={toggleTheme}
+          className="sr-only"
+        />
         {/* Toggle */}
-        <div className="relative">
-          {/* Input */}
-          <input
-            type="checkbox"
-            checked={theme === ThemeMode.DARK}
-            onChange={toggleTheme}
-            className="sr-only"
-          />
+        <div className="relative" onClick={toggleTheme}>
           {/* Line */}
           <div
             className={`block h-8 w-14 rounded-full transition ${theme === ThemeMode.DARK ? "bg-gradient-to-r from-indigo-500 to-purple-600" : "bg-gradient-to-r from-yellow-400 to-orange-500"}`}
@@ -58,10 +58,10 @@ export const ThemeSwitch = () => {
           </div>
         </div>
         {/* Label */}
-        <div className="ml-3 font-medium text-gray-700">
+        <div className="ml-3 font-medium text-gray-500">
           {theme === ThemeMode.DARK ? "DARK Mode" : "LIGHT Mode"}
         </div>
-      </label>
+      </div>
     </ClientOnly>
   )
 }
