@@ -29,7 +29,9 @@ const RootLayout: React.FC<RootLayoutProps> = ({
       <body>
         <Providers>
           <Header />
-          {children}
+          <div className="pt-16">
+            {children}
+          </div>
           <Footer lng={lng} />
           <OneTapComponent />
         </Providers>
