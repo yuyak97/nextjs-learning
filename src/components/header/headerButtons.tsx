@@ -1,20 +1,43 @@
-import Button from '@/components/common/button';
+import Button from "@/components/common/button"
+import { useState } from "react"
+import Modal from "../common/modal"
+import { AuthModalType } from "@/enums/auth.enum"
 
 const HeaderButtons = () => {
+  const [activeAuthModal, setActiveAuthModal] = useState<AuthModalType | null>(
+    null,
+  )
+
+  const openModal = (modalType: AuthModalType) => {
+    setActiveAuthModal(modalType)
+  }
+
+  const closeModal = () => {
+    setActiveAuthModal(null)
+  }
+
   return (
     <div>
-      <Button 
-        text="Sign In" 
+      <Button
+        text="Sign In"
         styles="bg-blue-500 hover:bg-blue-700 text-white rounded-l"
-        onClick={() => console.log("Sign In Clicked")} 
+        onClick={() => openModal(AuthModalType.SIGN_IN)}
       />
-      <Button 
-        text="Sign Up" 
+      <Button
+        text="Sign Up"
         styles="bg-green-500 hover:bg-green-700 text-white rounded-r"
-        onClick={() => console.log("Sign Up Clicked")} 
+        onClick={() => openModal(AuthModalType.SIGN_UP)}
       />
-    </div>
-  );
-};
 
-export default HeaderButtons;
+      <Modal
+        isOpen={activeAuthModal !== null}
+        onClose={closeModal}
+        title="Sign In"
+      >
+        <p>{activeAuthModal}</p>
+      </Modal>
+    </div>
+  )
+}
+
+export default HeaderButtons
