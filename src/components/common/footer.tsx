@@ -15,20 +15,27 @@ export const Footer: React.FC<Props> = ({ lng }) => {
   const { t } = useTranslation(lng, "common")
 
   return (
-    <footer className="mt-12 bg-gray-100 p-4 dark:bg-gray-900 md: md:items-center md:p-6">
-      <div className="my-2">
-        <ThemeSwitch />
-      </div>
-      
-      <div className="my-3 w-20">
-        <label className="uppercase">{t("Common.language")}</label>
-        <div className="mt-1">
-          <LanguageSelector lng={lng} />
+    <footer className="bg-gray-100 p-4 dark:bg-gray-900 md:flex md:flex-col md:items-center md:justify-between md:p-6">
+      <div className="mb-4 md:flex md:w-full md:justify-between">
+        <div className="my-1">
+          <label className="uppercase">{t("Common.language")}</label>
+          <div className="mt-1 w-16">
+            {/* Adjust width here */}
+            <LanguageSelector lng={lng} />
+          </div>
+        </div>
+
+        <div className="my-2 md:hidden">
+          <ThemeSwitch />
+        </div>
+
+        <div className="hidden md:block">
+          <ThemeSwitch />
         </div>
       </div>
 
       <div>
-        <span className="text-sm text-gray-500 dark:text-gray-400 text-center">
+        <span className="text-sm text-gray-500 dark:text-gray-400">
           © {new Date().getFullYear()} {brand.name}
         </span>
       </div>
