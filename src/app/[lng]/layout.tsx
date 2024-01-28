@@ -6,7 +6,7 @@ import { Providers } from "@/components/app/providers"
 import Header from "@/components/common/header"
 import "@/styles/globals.css"
 import Script from "next/script"
-import OneTapComponent from "@/components/common/oneTap"
+import { Session } from "next-auth"
 
 export async function generateStaticParams(): Promise<{ lng: string }[]> {
   return languages.map((lng) => ({ lng }))
@@ -15,11 +15,13 @@ export async function generateStaticParams(): Promise<{ lng: string }[]> {
 interface RootLayoutProps {
   children: ReactNode
   params: { lng: string }
+  session?: Session;
 }
 
 const RootLayout: React.FC<RootLayoutProps> = ({
   children,
   params: { lng },
+  session
 }) => {
   return (
     <html suppressHydrationWarning lang={lng} dir={dir(lng)}>
@@ -27,13 +29,13 @@ const RootLayout: React.FC<RootLayoutProps> = ({
         <Script src="https://accounts.google.com/gsi/client" />
       </head>
       <body>
-        <Providers>
+        <Providers session={session}>
           <Header />
           <div className="pt-16">
             {children}
           </div>
           <Footer lng={lng} />
-          <OneTapComponent />
+          {/* <OneTapComponent /> */}
         </Providers>
       </body>
     </html>

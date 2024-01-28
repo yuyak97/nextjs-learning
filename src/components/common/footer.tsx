@@ -11,7 +11,6 @@ type Props = {
 }
 
 export const Footer: React.FC<Props> = ({ lng }) => {
-  const { data } = useSession()
   const { t } = useTranslation(lng, "common")
 
   return (

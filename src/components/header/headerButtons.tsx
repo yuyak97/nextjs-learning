@@ -1,12 +1,15 @@
 import Button from "@/components/common/button"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Modal from "../common/modal"
 import { AuthModalType } from "@/enums/auth.enum"
+import AuthModalContainer from "../common/authModalContainer"
+import { useSession } from "next-auth/react"
 
 const HeaderButtons = () => {
   const [activeAuthModal, setActiveAuthModal] = useState<AuthModalType | null>(
     null,
   )
+  const { data: session, status } = useSession()
 
   const openModal = (modalType: AuthModalType) => {
     setActiveAuthModal(modalType)
@@ -15,6 +18,11 @@ const HeaderButtons = () => {
   const closeModal = () => {
     setActiveAuthModal(null)
   }
+
+  useEffect(() => {
+    console.log({session})
+  }, [session])
+  
 
   return (
     <div>
@@ -29,12 +37,14 @@ const HeaderButtons = () => {
         onClick={() => openModal(AuthModalType.SIGN_UP)}
       />
 
+      <p>email:{status}</p>
+
       <Modal
         isOpen={activeAuthModal !== null}
         onClose={closeModal}
-        title="Sign In"
+        title={activeAuthModal === AuthModalType.SIGN_IN ? "Welcome back" : "Join The community"}
       >
-        <p>{activeAuthModal}</p>
+        <AuthModalContainer type={activeAuthModal!} />
       </Modal>
     </div>
   )

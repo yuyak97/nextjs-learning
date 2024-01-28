@@ -2,11 +2,15 @@
 
 import { FC, PropsWithChildren } from "react"
 import { ThemeProvider } from "next-themes"
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider, SessionProviderProps } from "next-auth/react"
 
-export const Providers: FC<PropsWithChildren> = ({ children }) => {
+type ProvidersProps = PropsWithChildren<{
+  session: SessionProviderProps['session'];
+}>;
+
+export const Providers: FC<ProvidersProps> = ({ children, session }) => {
   return (
-    <SessionProvider>
+    <SessionProvider session={session}>
       <ThemeProvider attribute="class">{children}</ThemeProvider>
     </SessionProvider>
   )
