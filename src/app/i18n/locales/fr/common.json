@@ -1,5 +1,7 @@
 {
   "Common": {
-    "language": "langue"
+    "language": "langue",
+    "welcome-back": "Welcome back",
+    "join-the-community": "Join"
   }
 }

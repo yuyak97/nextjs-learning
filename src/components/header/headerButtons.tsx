@@ -4,8 +4,14 @@ import Modal from "../common/modal"
 import { AuthModalType } from "@/enums/auth.enum"
 import AuthModalContainer from "../common/authModalContainer"
 import { useSession } from "next-auth/react"
+import { useTranslation } from "@/app/i18n/client"
 
-const HeaderButtons = () => {
+type Props = {
+  lng: string
+}
+
+const HeaderButtons:React.FC<Props> = ({ lng }) => {
+  const { t } = useTranslation(lng, "common")
   const [activeAuthModal, setActiveAuthModal] = useState<AuthModalType | null>(
     null,
   )
@@ -42,7 +48,7 @@ const HeaderButtons = () => {
       <Modal
         isOpen={activeAuthModal !== null}
         onClose={closeModal}
-        title={activeAuthModal === AuthModalType.SIGN_IN ? "Welcome back" : "Join The community"}
+        title={activeAuthModal === AuthModalType.SIGN_IN ? t("Common.welcome-back") : t("Common.join-the-community")}
       >
         <AuthModalContainer type={activeAuthModal!} />
       </Modal>
