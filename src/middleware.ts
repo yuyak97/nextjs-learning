@@ -7,8 +7,13 @@ acceptLanguage.languages(languages)
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)"],
 }
+const PUBLIC_FILE = /\.(.*)$/
 
 export function middleware(req: NextRequest) {
+  if (PUBLIC_FILE.test(req.nextUrl.pathname)) {
+    return NextResponse.next()
+  }
+
   let lng: string | undefined | null
 
   if (req.cookies.has(cookieName)) {
