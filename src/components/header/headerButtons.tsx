@@ -10,7 +10,7 @@ type Props = {
   lng: string
 }
 
-const HeaderButtons:React.FC<Props> = ({ lng }) => {
+const HeaderButtons: React.FC<Props> = ({ lng }) => {
   const { t } = useTranslation(lng, "common")
   const [activeAuthModal, setActiveAuthModal] = useState<AuthModalType | null>(
     null,
@@ -26,15 +26,14 @@ const HeaderButtons:React.FC<Props> = ({ lng }) => {
   }
 
   useEffect(() => {
-    console.log({session})
+    console.log({ session })
   }, [session])
-  
 
   return (
     <div>
       <Button
         text="Sign In"
-        styles="bg-blue-500 hover:bg-blue-700 text-white rounded-l"
+        styles="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-300 ease-in-out font-press-start"
         onClick={() => openModal(AuthModalType.SIGN_IN)}
       />
       <Button
@@ -48,7 +47,11 @@ const HeaderButtons:React.FC<Props> = ({ lng }) => {
       <Modal
         isOpen={activeAuthModal !== null}
         onClose={closeModal}
-        title={activeAuthModal === AuthModalType.SIGN_IN ? t("Common.welcome-back") : t("Common.join-the-community")}
+        title={
+          activeAuthModal === AuthModalType.SIGN_IN
+            ? t("Common.welcome-back")
+            : t("Common.join-the-community")
+        }
       >
         <AuthModalContainer type={activeAuthModal!} />
       </Modal>
