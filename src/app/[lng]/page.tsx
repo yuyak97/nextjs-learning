@@ -14,7 +14,6 @@ const Home: React.FC<DefaultPageProps> = ({ params: { lng } }) => {
 
   return (
     <>
-      <h1>{t("title")}</h1>
       <Hero />
       <Link href={`/${lng}/second-page`}>{t("to-second-page")}</Link>
     </>
