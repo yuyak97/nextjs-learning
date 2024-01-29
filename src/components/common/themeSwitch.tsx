@@ -57,10 +57,6 @@ export const ThemeSwitch = () => {
             )}
           </div>
         </div>
-        {/* Label */}
-        {/* <div className="ml-3 font-medium text-gray-500">
-          {theme === ThemeMode.DARK ? "DARK Mode" : "LIGHT Mode"}
-        </div> */}
       </div>
     </ClientOnly>
   )
