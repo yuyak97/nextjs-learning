@@ -7,6 +7,7 @@ import Header from "@/components/common/header"
 import "@/styles/globals.css"
 import Script from "next/script"
 import { Session } from "next-auth"
+import { GlobalStyles } from "@/components/app/globalStyle"
 
 export async function generateStaticParams(): Promise<{ lng: string }[]> {
   return languages.map((lng) => ({ lng }))
@@ -15,13 +16,13 @@ export async function generateStaticParams(): Promise<{ lng: string }[]> {
 interface RootLayoutProps {
   children: ReactNode
   params: { lng: string }
-  session?: Session;
+  session?: Session
 }
 
 const RootLayout: React.FC<RootLayoutProps> = ({
   children,
   params: { lng },
-  session
+  session,
 }) => {
   return (
     <html suppressHydrationWarning lang={lng} dir={dir(lng)}>
@@ -30,12 +31,10 @@ const RootLayout: React.FC<RootLayoutProps> = ({
       </head>
       <body>
         <Providers session={session}>
-          <Header />
-          <div className="pt-16">
-            {children}
-          </div>
+          <GlobalStyles />
+          <Header lng={lng} />
+          <div>{children}</div>
           <Footer lng={lng} />
-          {/* <OneTapComponent /> */}
         </Providers>
       </body>
     </html>

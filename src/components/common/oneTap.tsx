@@ -1,6 +1,12 @@
-"use client"
-
+/** @jsxImportSource @emotion/react */
 import useOneTapSignin from "@/hooks/useOneTapSignin"
+import { css } from "@emotion/react"
+
+const oneTapStyle = css({
+  position: "fixed",
+  right: 0,
+  top: 0,
+})
 
 const OneTapComponent = () => {
   const { isLoading: oneTapIsLoading } = useOneTapSignin({
@@ -8,7 +14,7 @@ const OneTapComponent = () => {
     parentContainerId: "oneTap",
   })
 
-  return <div id="oneTap" className="fixed right-0 top-0 " /> // This is done with tailwind. Update with system of choice
+  return <div id="oneTap" css={oneTapStyle} />
 }
 
 export default OneTapComponent
