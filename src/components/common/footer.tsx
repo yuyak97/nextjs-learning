@@ -12,6 +12,7 @@ type Props = {
 
 export const Footer: React.FC<Props> = ({ lng }) => {
   const { t } = useTranslation(lng, "common")
+  const { data: session, status } = useSession()
 
   return (
     <footer className="bg-gray-100 p-4 dark:bg-gray-900 md:flex md:flex-col md:items-center md:justify-between md:p-6">
@@ -22,6 +23,7 @@ export const Footer: React.FC<Props> = ({ lng }) => {
             {/* Adjust width here */}
             <LanguageSelector lng={lng} />
           </div>
+          <p>status: {status}</p>
         </div>
 
         <div className="my-2 md:hidden">

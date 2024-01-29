@@ -15,7 +15,6 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
   const [activeAuthModal, setActiveAuthModal] = useState<AuthModalType | null>(
     null,
   )
-  const { data: session, status } = useSession()
 
   const openModal = (modalType: AuthModalType) => {
     setActiveAuthModal(modalType)
@@ -24,10 +23,6 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
   const closeModal = () => {
     setActiveAuthModal(null)
   }
-
-  useEffect(() => {
-    console.log({ session })
-  }, [session])
 
   return (
     <div>
@@ -41,8 +36,6 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
         styles="bg-green-500 hover:bg-green-700 text-white rounded-r"
         onClick={() => openModal(AuthModalType.SIGN_UP)}
       />
-
-      <p>email:{status}</p>
 
       <Modal
         isOpen={activeAuthModal !== null}
