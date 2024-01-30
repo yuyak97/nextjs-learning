@@ -1,7 +1,8 @@
+import React from "react"
+import HeroImage from "../../../public/images/DALL·E_arcade_game.jpeg"
 import { useTranslation } from "@/app/i18n/client"
 import { pressStartFont } from "@/utils/font"
 import Image from "next/image"
-import React from "react"
 
 type Props = {
   lng: string
@@ -14,7 +15,8 @@ const Hero: React.FC<Props> = ({ lng }) => {
     <div className="relative h-[400px]">
       <Image
         alt="hero"
-        src="/images/DALL·E_arcade_game.jpeg"
+        src={HeroImage}
+        placeholder="blur"
         fill
         priority
         style={{ objectFit: "cover" }}
