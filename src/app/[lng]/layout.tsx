@@ -6,7 +6,8 @@ import { Providers } from "@/components/app/providers"
 import Header from "@/components/common/header"
 import "@/styles/globals.css"
 import Script from "next/script"
-import { Session } from "next-auth"
+import { Session, getServerSession } from "next-auth"
+import { authOptions } from "../api/auth/[...nextauth]/auth-options"
 
 export async function generateStaticParams(): Promise<{ lng: string }[]> {
   return languages.map((lng) => ({ lng }))
@@ -15,14 +16,14 @@ export async function generateStaticParams(): Promise<{ lng: string }[]> {
 interface RootLayoutProps {
   children: ReactNode
   params: { lng: string }
-  session?: Session;
 }
 
-const RootLayout: React.FC<RootLayoutProps> = ({
+const RootLayout: React.FC<RootLayoutProps> = async ({
   children,
   params: { lng },
-  session
 }) => {
+  const session = await getServerSession(authOptions)
+
   return (
     <html suppressHydrationWarning lang={lng} dir={dir(lng)}>
       <head>
@@ -30,10 +31,8 @@ const RootLayout: React.FC<RootLayoutProps> = ({
       </head>
       <body>
         <Providers session={session}>
-          <Header />
-          <div className="pt-16">
-            {children}
-          </div>
+          <Header lng={lng} />
+          <div className="pt-12">{children}</div>
           <Footer lng={lng} />
           {/* <OneTapComponent /> */}
         </Providers>
