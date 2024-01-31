@@ -8,6 +8,7 @@ import "@/styles/globals.css"
 import Script from "next/script"
 import { Session, getServerSession } from "next-auth"
 import { authOptions } from "../api/auth/[...nextauth]/auth-options"
+import CookieConsentModal from "@/components/common/cookieConsentModal"
 
 export async function generateStaticParams(): Promise<{ lng: string }[]> {
   return languages.map((lng) => ({ lng }))
@@ -35,6 +36,8 @@ const RootLayout: React.FC<RootLayoutProps> = async ({
           <div className="pt-12">{children}</div>
           <Footer lng={lng} />
           {/* <OneTapComponent /> */}
+
+          <CookieConsentModal />
         </Providers>
       </body>
     </html>

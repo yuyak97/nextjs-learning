@@ -38,12 +38,12 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
         <div>
           <Button
             text="Sign In"
-            styles="bg-red-600 hover:bg-red-800 text-white font-bold py-1 px-3 rounded shadow-lg hover:shadow-xl transition duration-300 ease-in-out font-press-start"
+            styles="bg-red-600 hover:bg-red-800 text-white font-bold py-1 px-3"
             onClick={() => openModal(AuthModalType.SIGN_IN)}
           />
           <Button
             text="Sign Up"
-            styles="bg-green-500 hover:bg-green-700 text-white rounded-r py-1 px-3"
+            styles="bg-green-500 hover:bg-red-800 text-white font-bold py-1 px-3"
             onClick={() => openModal(AuthModalType.SIGN_UP)}
           />
 
