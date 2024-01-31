@@ -43,7 +43,7 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
           />
           <Button
             text="Sign Up"
-            styles="bg-green-500 hover:bg-red-800 text-white font-bold py-1 px-3"
+            styles="bg-green-500 hover:bg-green-800 text-white font-bold py-1 px-3"
             onClick={() => openModal(AuthModalType.SIGN_UP)}
           />
 
