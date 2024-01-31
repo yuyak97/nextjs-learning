@@ -1,5 +1,5 @@
 import Button from "@/components/common/button"
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 import Modal from "../common/modal"
 import { AuthModalType, AuthStatus } from "@/enums/auth.enum"
 import AuthModalContainer from "../common/authModalContainer"
@@ -15,7 +15,6 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
   const { data: session, status } = useSession()
   const { t } = useTranslation(lng, "common")
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const dropdownRef = useRef(null)
 
   const [activeAuthModal, setActiveAuthModal] = useState<AuthModalType | null>(
     null,
@@ -39,12 +38,12 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
         <div>
           <Button
             text="Sign In"
-            styles="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded shadow-lg hover:shadow-xl transition duration-300 ease-in-out font-press-start"
+            styles="bg-red-600 hover:bg-red-800 text-white font-bold py-1 px-3 rounded shadow-lg hover:shadow-xl transition duration-300 ease-in-out font-press-start"
             onClick={() => openModal(AuthModalType.SIGN_IN)}
           />
           <Button
             text="Sign Up"
-            styles="bg-green-500 hover:bg-green-700 text-white rounded-r"
+            styles="bg-green-500 hover:bg-green-700 text-white rounded-r py-1 px-3"
             onClick={() => openModal(AuthModalType.SIGN_UP)}
           />
 
