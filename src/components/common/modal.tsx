@@ -1,6 +1,8 @@
 "use client"
 
 import React, { ReactNode } from "react"
+import Button from "./button"
+import { ButtonColor } from "@/enums/style.enum"
 
 type Props = {
   isOpen: boolean
@@ -33,12 +35,11 @@ const Modal: React.FC<Props> = ({ isOpen, onClose, title, children }) => {
         </h2>
         {children}
         <div className="mt-4 flex justify-center">
-          <button
+          <Button
+            text={"Close"}
+            color={ButtonColor.LIGHT_GRAY}
             onClick={onClose}
-            className="rounded bg-gray-500 px-4 py-2 font-bold text-white hover:bg-blue-700 dark:hover:bg-blue-800"
-          >
-            Close
-          </button>
+          />
         </div>
       </div>
     </div>
