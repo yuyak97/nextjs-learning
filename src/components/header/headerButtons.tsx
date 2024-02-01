@@ -6,6 +6,7 @@ import AuthModalContainer from "../common/authModalContainer"
 import { signOut, useSession } from "next-auth/react"
 import { useTranslation } from "@/app/i18n/client"
 import Image from "next/image"
+import { ButtonColor } from "@/enums/style.enum"
 
 type Props = {
   lng: string
@@ -37,13 +38,13 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
       {status === AuthStatus.UNAUTHENTICATED ? (
         <div>
           <Button
+            color={ButtonColor.RED}
             text="Sign In"
-            styles="bg-red-600 hover:bg-red-800 text-white font-bold py-1 px-3"
             onClick={() => openModal(AuthModalType.SIGN_IN)}
           />
           <Button
+            color={ButtonColor.GREEN}
             text="Sign Up"
-            styles="bg-green-500 hover:bg-green-800 text-white font-bold py-1 px-3"
             onClick={() => openModal(AuthModalType.SIGN_UP)}
           />
 

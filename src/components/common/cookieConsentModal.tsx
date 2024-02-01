@@ -3,6 +3,8 @@
 import { CookieConsentType } from "@/enums/common.enum"
 import useCookieConsent from "@/hooks/useCookieConsent"
 import React from "react"
+import Button from "./button"
+import { ButtonColor } from "@/enums/style.enum"
 
 const CookieConsentModal: React.FC = () => {
   const { showModal, handleCookieConsent } = useCookieConsent()
@@ -17,18 +19,16 @@ const CookieConsentModal: React.FC = () => {
           </p>
         </div>
         <div className="flex justify-center space-x-4">
-          <button
+          <Button
             onClick={() => handleCookieConsent(CookieConsentType.NECESSARY)}
-            className="rounded bg-gray-300 px-4 py-2 font-bold text-black hover:bg-gray-400"
-          >
-            Accept Only Necessary
-          </button>
-          <button
+            color={ButtonColor.GRAY}
+            text="Accept Only Necessary"
+          />
+          <Button
             onClick={() => handleCookieConsent(CookieConsentType.ALL)}
-            className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-          >
-            Accept All
-          </button>
+            color={ButtonColor.BLUE}
+            text="Accept All"
+          />
         </div>
       </div>
     )

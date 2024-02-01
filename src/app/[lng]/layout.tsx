@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import { ReactNode } from "react"
 import { dir } from "i18next"
 import { languages } from "../i18n/settings"
@@ -28,12 +29,16 @@ const RootLayout: React.FC<RootLayoutProps> = async ({
   return (
     <html suppressHydrationWarning lang={lng} dir={dir(lng)}>
       <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+          rel="stylesheet"
+        />
         <Script src="https://accounts.google.com/gsi/client" />
       </head>
       <body>
         <Providers session={session}>
           <Header lng={lng} />
-          <div className="pt-12">{children}</div>
+          <div className="pt-4">{children}</div>
           <Footer lng={lng} />
           {/* <OneTapComponent /> */}
 
