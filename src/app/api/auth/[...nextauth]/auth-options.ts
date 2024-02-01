@@ -46,14 +46,14 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     redirect: async ({ url, baseUrl }) => {
-      return `${baseUrl}/`
+      return url
     },
     session: async ({ session, token, user, trigger, newSession }) => {
       prisma.$connect()
       const userAccount = await prisma.account.findFirst({
         where: {
-          userId: user.id
-        }
+          userId: user.id,
+        },
       })
       prisma.$disconnect()
 
@@ -61,9 +61,9 @@ export const authOptions: NextAuthOptions = {
         ...session,
         user: {
           ...session.user,
-          accessToken: userAccount?.access_token
+          accessToken: userAccount?.access_token,
         },
-      };
+      }
     },
-  }
+  },
 }
