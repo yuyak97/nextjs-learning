@@ -8,6 +8,12 @@ docker exec -it book-db psql -U postgres book
 npx prisma studio
 ```
 
+## RAWG API
+
+- [rawg api official](https://rawg.io/apidocs)
+- [api key info](https://rawg.io/@yuyak/apikey)
+- [document](https://api.rawg.io/docs/#tag/games)
+
 https://github.com/i18next/next-app-dir-i18next-example-ts/tree/main/app/%5Blng%5D
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
