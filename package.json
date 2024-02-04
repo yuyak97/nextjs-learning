@@ -28,6 +28,7 @@
     "@prisma/client": "^5.8.1",
     "@reduxjs/toolkit": "^2.1.0",
     "accept-language": "^3.0.18",
+    "axios": "^1.6.7",
     "google-auth-library": "^9.4.2",
     "i18next": "^23.7.17",
     "i18next-browser-languagedetector": "^7.2.0",

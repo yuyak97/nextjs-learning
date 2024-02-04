@@ -44,7 +44,7 @@ CREATE TABLE "sessions" (
 );
 
 -- CreateTable
-CREATE TABLE "VerificationRequest" (
+CREATE TABLE "verification_requests" (
     "id" TEXT NOT NULL,
     "identifier" TEXT NOT NULL,
     "token" TEXT NOT NULL,
@@ -52,7 +52,19 @@ CREATE TABLE "VerificationRequest" (
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "VerificationRequest_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "verification_requests_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "user_properties" (
+    "id" SERIAL NOT NULL,
+    "username" TEXT,
+    "image" TEXT,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "user_id" TEXT NOT NULL,
+
+    CONSTRAINT "user_properties_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -65,13 +77,19 @@ CREATE UNIQUE INDEX "accounts_provider_provider_account_id_key" ON "accounts"("p
 CREATE UNIQUE INDEX "sessions_session_token_key" ON "sessions"("session_token");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "VerificationRequest_token_key" ON "VerificationRequest"("token");
+CREATE UNIQUE INDEX "verification_requests_token_key" ON "verification_requests"("token");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "VerificationRequest_identifier_token_key" ON "VerificationRequest"("identifier", "token");
+CREATE UNIQUE INDEX "verification_requests_identifier_token_key" ON "verification_requests"("identifier", "token");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_properties_user_id_key" ON "user_properties"("user_id");
 
 -- AddForeignKey
 ALTER TABLE "accounts" ADD CONSTRAINT "accounts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "sessions" ADD CONSTRAINT "sessions_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "user_properties" ADD CONSTRAINT "user_properties_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
