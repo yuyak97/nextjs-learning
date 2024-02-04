@@ -7,7 +7,7 @@ import { Providers } from "@/components/app/providers"
 import Header from "@/components/common/header"
 import "@/styles/globals.css"
 import Script from "next/script"
-import { Session, getServerSession } from "next-auth"
+import { getServerSession } from "next-auth"
 import { authOptions } from "../api/auth/[...nextauth]/auth-options"
 import CookieConsentModal from "@/components/common/cookieConsentModal"
 
@@ -38,7 +38,7 @@ const RootLayout: React.FC<RootLayoutProps> = async ({
       <body>
         <Providers session={session}>
           <Header lng={lng} />
-          <div className="pt-4">{children}</div>
+          <div className="mt-12">{children}</div>
           <Footer lng={lng} />
           {/* <OneTapComponent /> */}
 

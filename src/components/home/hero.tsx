@@ -1,7 +1,7 @@
 import React from "react"
 import HeroImage from "../../../public/images/DALL·E_arcade_game.jpeg"
 import { useTranslation } from "@/app/i18n/client"
-import { pressStartFont } from "@/utils/font"
+import { pressStartFont } from "@/utils/font.util"
 import Image from "next/image"
 
 type Props = {
