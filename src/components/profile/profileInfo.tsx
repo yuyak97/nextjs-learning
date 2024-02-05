@@ -35,7 +35,7 @@ const ProfileInfo: React.FC<Props> = ({
       return
     }
 
-    dispatch(updateMyselfThunk({ id, body: { username: editUsername } }))
+    dispatch(updateMyselfThunk({ username: editUsername }))
   }
 
   useEffect(() => {

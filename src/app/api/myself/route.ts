@@ -1,16 +1,13 @@
 import { Status } from "@/enums/status.enum"
 import { NextRequest } from "next/server"
 import { getServerSession } from "next-auth"
-import { authOptions } from "../../auth/[...nextauth]/auth-options"
+import { authOptions } from "../auth/[...nextauth]/auth-options"
 import { updateUserService } from "@/api/service/user"
 
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { id: string } },
-) {
+export async function PUT(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions)
-    if (!session) {
+    if (!session?.user) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {
         status: Status.UNAUTHORIZED,
         headers: {
@@ -21,7 +18,7 @@ export async function PUT(
 
     const body = await req.json()
     const user = await updateUserService({
-      userId: params.id,
+      email: session.user.email!,
       body: { username: body.username },
     })
 

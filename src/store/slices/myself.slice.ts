@@ -18,8 +18,8 @@ export const getMyselfThunk = createAsyncThunk(
 
 export const updateMyselfThunk = createAsyncThunk(
   `${ReduxToolkitSlice.MYSELF}/updateMyselfThunk`,
-  async ({ id, body }: { id: string; body: UserUpdateRequest }) => {
-    const { data } = await axios.put<UserResponse>(`/api/users/${id}`, body)
+  async (body: UserUpdateRequest) => {
+    const { data } = await axios.put<UserResponse>(`/api/myself`, body)
     return data
   },
 )
