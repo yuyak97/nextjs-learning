@@ -1,6 +1,10 @@
 import { Status } from "@/enums/status.enum"
 import { formatUser } from "../formatter/user"
-import { getUserByEmail as getUserByEmailRepository } from "../repository/user"
+import {
+  getUserByEmail as getUserByEmailRepository,
+  updateUserById,
+} from "../repository/user"
+import { UserUpdateRequest } from "../type/user"
 
 export const getUserByEmailService = async (email: string) => {
   try {
@@ -13,6 +17,19 @@ export const getUserByEmailService = async (email: string) => {
     }
 
     return formatUser(user)
+  } catch (err) {
+    console.error(err)
+    throw new Error()
+  }
+}
+
+export const updateUserService = async (req: {
+  userId: string
+  body: UserUpdateRequest
+}) => {
+  try {
+    const user = await updateUserById(req)
+    return getUserByEmailService(user.email!)
   } catch (err) {
     console.error(err)
     throw new Error()

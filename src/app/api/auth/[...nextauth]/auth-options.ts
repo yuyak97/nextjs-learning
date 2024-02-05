@@ -19,7 +19,7 @@ export const googleSecret = new OAuth2Client(
 export const adapter: Adapter = PrismaAdapter(prisma)
 
 export const authOptions: NextAuthOptions = {
-  debug: true,
+  debug: false,
   adapter,
   secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
   session: {

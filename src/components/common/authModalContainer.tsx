@@ -9,7 +9,7 @@ type Props = {
 
 const AuthModalContainer: React.FC<Props> = ({ type }) => {
   const handleGoogleSignIn = () => {
-    signIn("google", { callbackUrl: "/second-page" })
+    signIn("google", { callbackUrl: "/profile" })
   }
 
   return (

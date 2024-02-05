@@ -7,6 +7,7 @@ import { signOut, useSession } from "next-auth/react"
 import { useTranslation } from "@/app/i18n/client"
 import Image from "next/image"
 import { ButtonColor } from "@/enums/style.enum"
+import Link from "next/link"
 
 type Props = {
   lng: string
@@ -81,7 +82,9 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
                 onClick={() => toggleDropdown()}
               ></div>
               <nav className="absolute right-0 z-50 mt-2 w-48 rounded-md bg-white px-4 py-2 shadow-lg dark:bg-gray-800">
-                <div className="py-2">Profile</div>
+                <Link href="/profile">
+                  <div className="py-2">Profile</div>
+                </Link>
                 <div className="py-2">Settings</div>
                 <div className="cursor-pointer py-2" onClick={() => signOut()}>
                   Sign out
