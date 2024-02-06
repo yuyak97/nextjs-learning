@@ -5,7 +5,7 @@ import { authOptions } from "../../auth/[...nextauth]/auth-options"
 import {
   createGamingHistoryService,
   getMyselfGamingHistoryService,
-} from "@/api/service/gaming-history"
+} from "@/api/service/gaming-history.service"
 
 export async function GET(req: NextRequest) {
   try {

@@ -40,14 +40,16 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
         <div>
           <Button
             color={ButtonColor.RED}
-            text="Sign In"
             onClick={() => openModal(AuthModalType.SIGN_IN)}
-          />
+          >
+            Sign In
+          </Button>
           <Button
             color={ButtonColor.GREEN}
-            text="Sign Up"
             onClick={() => openModal(AuthModalType.SIGN_UP)}
-          />
+          >
+            Sign Up
+          </Button>
 
           <Modal
             isOpen={activeAuthModal !== null}

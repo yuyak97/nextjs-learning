@@ -2,15 +2,15 @@ import { ButtonColor } from "@/enums/style.enum"
 import React from "react"
 
 type Props = {
-  text: string
   styles?: string
   color: ButtonColor
   isBold?: boolean
   onClick: () => void
+  children: React.ReactNode
 }
 
 const Button: React.FC<Props> = ({
-  text,
+  children,
   styles,
   color,
   isBold = true,
@@ -21,7 +21,7 @@ const Button: React.FC<Props> = ({
       className={`m-1 rounded px-4 py-1 ${isBold ? "font-bold" : ""} text-black ${color} ${styles || ""}`}
       onClick={onClick}
     >
-      {text}
+      {children}
     </button>
   )
 }

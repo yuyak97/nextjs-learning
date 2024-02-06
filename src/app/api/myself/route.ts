@@ -2,7 +2,7 @@ import { Status } from "@/enums/status.enum"
 import { NextRequest } from "next/server"
 import { getServerSession } from "next-auth"
 import { authOptions } from "../auth/[...nextauth]/auth-options"
-import { updateUserService } from "@/api/service/user"
+import { updateUserService } from "@/api/service/user.service"
 
 export async function PUT(req: NextRequest) {
   try {

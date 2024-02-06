@@ -1,4 +1,4 @@
-import { getUserByEmailService } from "@/api/service/user"
+import { getUserByEmailService } from "@/api/service/user.service"
 import { Status } from "@/enums/status.enum"
 import { NextRequest } from "next/server"
 

@@ -1,4 +1,4 @@
-import { getUserByEmail } from "../repository/user"
+import { getUserByEmail } from "../repository/user.repository"
 import {
   GamingHistoryCreateBody,
   GamingHistoryResponse,
@@ -6,7 +6,7 @@ import {
 import {
   createGamingHistory,
   getUserGamingHistory,
-} from "../repository/gaming-history"
+} from "../repository/gaming-history.repository"
 
 export const getMyselfGamingHistoryService = async (
   email: string,

@@ -1,13 +1,14 @@
 "use client"
 
 import Image from "next/image"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import Heading from "../common/heading"
 import LoadingDots from "@/components/common/loadingDots"
 import { HeadingStyle } from "@/enums/theme.enum"
 import { useTranslation } from "@/app/i18n/client"
 import { useAppDispatch } from "@/store/app/hooks"
 import { updateMyselfThunk } from "@/store/slices/myself.slice"
+import Input from "../common/input"
 
 type Props = {
   name: string
@@ -23,23 +24,24 @@ const ProfileInfo: React.FC<Props> = ({
   email,
   image,
   username,
-  id,
   lng,
 }) => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation(lng, "profile")
-  const [editUsername, setEditUsername] = useState(username)
+  const editUsername = useRef<HTMLInputElement>(null)
 
   const handleSave = () => {
-    if (!id || editUsername === undefined) {
+    if (!editUsername.current || !editUsername.current.value) {
       return
     }
 
-    dispatch(updateMyselfThunk({ username: editUsername }))
+    dispatch(updateMyselfThunk({ username: editUsername.current.value }))
   }
 
   useEffect(() => {
-    setEditUsername(username) // Update editUsername when username prop changes
+    if (editUsername.current) {
+      editUsername.current.value = username || ""
+    }
   }, [username])
 
   return (
@@ -67,12 +69,7 @@ const ProfileInfo: React.FC<Props> = ({
         <div className="text-lg">
           {username ? (
             <div className="flex items-center gap-2">
-              <input
-                type="text"
-                className="flex-grow border-b-2 bg-transparent focus:border-blue-500 focus:outline-none dark:border-white"
-                value={editUsername || ""}
-                onChange={(e) => setEditUsername(e.target.value)}
-              />
+              <Input ref={editUsername} value={username || ""} />
               <button
                 className="rounded px-2 py-1 text-sm font-semibold hover:bg-gray-200 dark:border-white dark:hover:bg-gray-700"
                 onClick={handleSave}

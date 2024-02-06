@@ -22,13 +22,15 @@ const CookieConsentModal: React.FC = () => {
           <Button
             onClick={() => handleCookieConsent(CookieConsentType.NECESSARY)}
             color={ButtonColor.GRAY}
-            text="Accept Only Necessary"
-          />
+          >
+            Accept Only Necessary
+          </Button>
           <Button
             onClick={() => handleCookieConsent(CookieConsentType.ALL)}
             color={ButtonColor.BLUE}
-            text="Accept All"
-          />
+          >
+            Accept All
+          </Button>
         </div>
       </div>
     )

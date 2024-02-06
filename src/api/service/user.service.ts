@@ -4,7 +4,7 @@ import {
   getUserByEmail,
   getUserByEmail as getUserByEmailRepository,
   updateUserById,
-} from "../repository/user"
+} from "../repository/user.repository"
 import { UserUpdateRequest } from "../type/user"
 
 export const getUserByEmailService = async (email: string) => {

@@ -35,11 +35,9 @@ const Modal: React.FC<Props> = ({ isOpen, onClose, title, children }) => {
         </h2>
         {children}
         <div className="mt-4 flex justify-center">
-          <Button
-            text={"Close"}
-            color={ButtonColor.LIGHT_GRAY}
-            onClick={onClose}
-          />
+          <Button color={ButtonColor.LIGHT_GRAY} onClick={onClose}>
+            close
+          </Button>
         </div>
       </div>
     </div>
