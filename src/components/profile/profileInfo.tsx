@@ -69,7 +69,7 @@ const ProfileInfo: React.FC<Props> = ({
         <div className="text-lg">
           {username ? (
             <div className="flex items-center gap-2">
-              <Input ref={editUsername} value={username || ""} />
+              <Input ref={editUsername} defaultValue={username || ""} />
               <button
                 className="rounded px-2 py-1 text-sm font-semibold hover:bg-gray-200 dark:border-white dark:hover:bg-gray-700"
                 onClick={handleSave}

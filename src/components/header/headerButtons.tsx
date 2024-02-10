@@ -37,7 +37,7 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
   return (
     <>
       {status === AuthStatus.UNAUTHENTICATED ? (
-        <div>
+        <div className="flex">
           <Button
             color={ButtonColor.RED}
             onClick={() => openModal(AuthModalType.SIGN_IN)}
@@ -61,6 +61,11 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
             }
           >
             <AuthModalContainer type={activeAuthModal!} />
+            <div className="mt-4 flex justify-center">
+              <Button color={ButtonColor.LIGHT_GRAY} onClick={closeModal}>
+                close
+              </Button>
+            </div>
           </Modal>
         </div>
       ) : (

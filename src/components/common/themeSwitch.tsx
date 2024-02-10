@@ -26,7 +26,7 @@ export const ThemeSwitch = () => {
 
   return (
     <ClientOnly>
-      <div className="flex cursor-pointer items-center">
+      <div className="relative z-0 flex cursor-pointer items-center">
         {/* Invisible Checkbox */}
         <input
           type="checkbox"

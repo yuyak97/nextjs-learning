@@ -17,13 +17,13 @@ const Button: React.FC<Props> = ({
   onClick,
 }) => {
   return (
-    <button
-      className={`m-1 rounded px-4 py-1 ${isBold ? "font-bold" : ""} text-black ${color} ${styles || ""}`}
+    <div
+      className={`z-10 m-1 cursor-pointer rounded px-4 py-1 ${isBold ? "font-bold" : ""} text-black ${color} ${styles || ""}`}
       onClick={onClick}
     >
       {children}
-    </button>
+    </div>
   )
 }
 
-export default Button
+export default React.memo(Button)

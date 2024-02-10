@@ -26,7 +26,7 @@ const Modal: React.FC<Props> = ({ isOpen, onClose, title, children }) => {
 
   return (
     <div
-      className="fixed inset-0 flex h-full w-full items-center justify-center overflow-y-auto bg-gray-600 bg-opacity-50 dark:bg-gray-800 dark:bg-opacity-70"
+      className="fixed inset-0 z-50 flex h-full w-full items-center justify-center overflow-y-auto bg-gray-600 bg-opacity-50 dark:bg-gray-800 dark:bg-opacity-70"
       onClick={handleBackdropClick}
     >
       <div className="w-11/12 max-w-2xl rounded bg-white p-4 shadow-lg dark:bg-gray-700 md:w-1/2 md:p-8">
@@ -34,11 +34,6 @@ const Modal: React.FC<Props> = ({ isOpen, onClose, title, children }) => {
           {title}
         </h2>
         {children}
-        <div className="mt-4 flex justify-center">
-          <Button color={ButtonColor.LIGHT_GRAY} onClick={onClose}>
-            close
-          </Button>
-        </div>
       </div>
     </div>
   )

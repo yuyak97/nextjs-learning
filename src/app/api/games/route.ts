@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const { data } = await axiosGameApi.get("/games?search=mario")
+    const { data } = await axiosGameApi.get(`/games?search=${search}`)
     return new Response(JSON.stringify(data.results), {
       status: 200,
       headers: {
