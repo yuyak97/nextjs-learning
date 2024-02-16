@@ -1,4 +1,4 @@
-import { whiteText } from "@/const/style"
+import { whiteText } from "@/const/style.const"
 
 export enum ButtonColor {
   RED = `bg-red-600 hover:bg-red-800 ${whiteText}`,

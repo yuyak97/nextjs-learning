@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react"
 import { ThemeSwitch } from "./themeSwitch"
 import LanguageSelector from "./languageSelector"
-import { brand } from "@/const/meta"
+import { brand } from "@/const/meta.const"
 import { useTranslation } from "@/app/i18n/client"
 
 type Props = {

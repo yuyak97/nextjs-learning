@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma"
-import { GamingHistoryCreateBodyWithUserId } from "../type/gaming-history"
+import { GamingHistoryCreateBodyWithUserId } from "../type/gaming-history.types"
 import { hashIds } from "@/lib/hash"
 
 export const getUserGamingHistory = async (email: string) => {

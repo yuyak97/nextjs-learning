@@ -3,6 +3,8 @@ import { GamingHistory } from "@prisma/client"
 export type GamingHistoryCreateBody = {
   title: string
   startMonth: Date
+  slug: string
+  image: string
   endMonth?: Date | null
   description: string
 }

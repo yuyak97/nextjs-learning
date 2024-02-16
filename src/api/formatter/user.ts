@@ -1,4 +1,4 @@
-import { UserEntity } from "../type/user"
+import { UserEntity } from "../type/user.types"
 
 export const formatUser = (user: UserEntity) => ({
   id: user.id,

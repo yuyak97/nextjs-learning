@@ -1,12 +1,10 @@
-import NextAuth, { NextAuthOptions } from "next-auth"
+import { NextAuthOptions } from "next-auth"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import prisma from "@/lib/prisma"
-import CredentialsProvider from "next-auth/providers/credentials"
 import { OAuth2Client } from "google-auth-library"
-import { NextApiRequest, NextApiResponse } from "next/types"
 import GoogleProvider from "next-auth/providers/google"
 import { Adapter } from "next-auth/adapters"
-import { authorize } from "./authorize"
+import { hashIds } from "@/lib/hash"
 
 export const googleAuthClient = new OAuth2Client(
   process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
@@ -17,6 +15,26 @@ export const googleSecret = new OAuth2Client(
 )
 
 export const adapter: Adapter = PrismaAdapter(prisma)
+// @ts-ignore
+adapter.createUser = (data: { name: string; email: string; image: string }) => {
+  return prisma.$transaction(async (tx) => {
+    const user = await tx.user.create({ data })
+    const unixTime = Math.floor(user.createdAt.getTime() / 1000)
+    await tx.userProperty.create({
+      data: {
+        username: `user-${hashIds.encode(unixTime)}`,
+        userId: user.id,
+      },
+    })
+
+    const u = await tx.user.findFirst({
+      where: { id: user.id },
+      include: { userProperty: true },
+    })
+
+    return user
+  })
+}
 
 export const authOptions: NextAuthOptions = {
   debug: false,

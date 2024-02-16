@@ -9,6 +9,7 @@
     "lint": "next lint",
     "prisma:migrate-create": "npx prisma migrate dev --create-only",
     "prisma:migrate-deploy": "npx prisma migrate deploy",
+    "prisma:migrate-reset": "npx prisma migrate reset",
     "prisma:generate": "npx prisma generate",
     "prisma:db-pull": "npx prisma db pull",
     "prisma:seed": "npx ts-node -r tsconfig-paths/register prisma/seeds/seed.ts $npm_config_target",

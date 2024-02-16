@@ -5,7 +5,7 @@ import {
   getUserByEmail as getUserByEmailRepository,
   updateUserById,
 } from "../repository/user.repository"
-import { UserUpdateRequest } from "../type/user"
+import { UserUpdateRequest } from "../type/user.types"
 
 export const getUserByEmailService = async (email: string) => {
   try {

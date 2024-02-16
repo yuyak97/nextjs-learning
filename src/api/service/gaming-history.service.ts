@@ -2,7 +2,7 @@ import { getUserByEmail } from "../repository/user.repository"
 import {
   GamingHistoryCreateBody,
   GamingHistoryResponse,
-} from "../type/gaming-history"
+} from "../type/gaming-history.types"
 import {
   createGamingHistory,
   getUserGamingHistory,
@@ -19,12 +19,13 @@ export const getMyselfGamingHistoryService = async (
     }
 
     return user?.gamingHistories.map(
-      ({ publicId, title, description, startMonth, endMonth }) => ({
+      ({ publicId, title, description, startMonth, endMonth, image }) => ({
         publicId,
         title,
         description,
         startMonth,
         endMonth,
+        image,
       }),
     )
   } catch (err) {

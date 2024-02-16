@@ -11,6 +11,10 @@ import FormInput from "../form/formInput"
 import useGetGames from "@/hooks/useGetGames"
 import FormTextarea from "../common/textarea"
 import InputContainer from "../form/inputContainer"
+import axios from "axios"
+import { GameApiResponse } from "@/api/type/game.types"
+import { getMyselfGamingHistory } from "@/store/slices/myself.slice"
+import { useAppDispatch } from "@/store/app/hooks"
 
 type Props = {
   isModalOpen: boolean
@@ -18,27 +22,49 @@ type Props = {
 }
 
 const AddGameModal: React.FC<Props> = ({ isModalOpen, handleCloseModal }) => {
-  const { register, handleSubmit, getValues, setValue } = useForm()
+  const dispatch = useAppDispatch()
+  const { register, handleSubmit, getValues, setValue } =
+    useForm<AddGameFormValues>()
   const { games, isLoading, fetchGames, clearSearchResult } = useGetGames()
-  const [selectedGame, setSelectedGame] = useState(null)
+  const [selectedGame, setSelectedGame] = useState<GameApiResponse | null>(null)
 
   const searchGames = async () => {
     const title = getValues("title")
+    if (!title) {
+      return
+    }
+
     await fetchGames(title)
   }
 
-  const selectGame = (game: any) => {
+  const selectGame = (game: GameApiResponse) => {
     setValue("title", game.name)
     setSelectedGame(game)
+    dispatch(getMyselfGamingHistory())
     clearSearchResult()
   }
 
   const submitAddGame = async () => {
     try {
-      console.log("submit")
-      console.log(getValues())
+      if (!selectedGame) {
+        return
+      }
+
+      const input = getValues()
+      await axios.post("/api/myself/gaming-histories", {
+        title: input.title,
+        image: selectedGame.backgroundImage,
+        slug: selectedGame.slug,
+        description: input.comment,
+        startMonth: new Date(input.startMonth),
+        endMonth: input.endMonth ? new Date(input.endMonth) : undefined,
+      })
+
+      dispatch(getMyselfGamingHistory())
       handleCloseModal()
-    } catch (err) {}
+    } catch (err) {
+      // TODO:
+    }
   }
 
   return (
@@ -93,9 +119,14 @@ const AddGameModal: React.FC<Props> = ({ isModalOpen, handleCloseModal }) => {
         <InputContainer>
           <FormTextarea {...register("comment")} placeholder={"comment"} />
         </InputContainer>
-        <Button color={ButtonColor.BLUE} onClick={handleSubmit(submitAddGame)}>
-          Add this gaming experience
-        </Button>
+        <div>
+          <Button
+            color={ButtonColor.BLUE}
+            onClick={handleSubmit(submitAddGame)}
+          >
+            Add this gaming experience
+          </Button>
+        </div>
       </form>
     </Modal>
   )

@@ -1,5 +1,5 @@
 import prisma from "@/lib/prisma"
-import { UserUpdateRequest } from "../type/user"
+import { UserUpdateRequest } from "../type/user.types"
 
 export const getUserByEmail = async (email: string) => {
   return prisma.user.findFirst({

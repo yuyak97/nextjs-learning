@@ -1,9 +1,9 @@
 "use client"
 
-import GamingHistory from "@/components/profile/gamingHistory"
+import GamingHistoryProfile from "@/components/profile/gamingHistoryProfile"
 import ProfileInfo from "@/components/profile/profileInfo"
 import { useAppDispatch, useAppSelector } from "@/store/app/hooks"
-import { getMyselfThunk, updateMyselfThunk } from "@/store/slices/myself.slice"
+import { getMyselfThunk } from "@/store/slices/myself.slice"
 import { DefaultPageProps } from "@/types/page-props.types"
 import { useSession } from "next-auth/react"
 import { redirect } from "next/navigation"
@@ -22,7 +22,7 @@ const Profile: React.FC<DefaultPageProps> = ({ params: { lng } }) => {
 
   useEffect(() => {
     if (!myself) {
-      dispatch(getMyselfThunk(user.email!))
+      dispatch(getMyselfThunk())
     }
   }, [])
 
@@ -36,7 +36,7 @@ const Profile: React.FC<DefaultPageProps> = ({ params: { lng } }) => {
         username={myself?.username}
         lng={lng}
       />
-      <GamingHistory />
+      <GamingHistoryProfile />
     </main>
   )
 }

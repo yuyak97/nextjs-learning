@@ -2,7 +2,7 @@
 
 import React from "react"
 import HeaderButtons from "@/components/header/headerButtons"
-import { brand } from "@/const/meta"
+import { brand } from "@/const/meta.const"
 
 type Props = {
   lng: string
