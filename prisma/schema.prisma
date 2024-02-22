@@ -85,7 +85,9 @@ model UserProperty {
 model GamingHistory {
   id          Int       @id @default(autoincrement())
   publicId    String?   @map("public_id")
-  title       String // Game title
+  title       String    // Game title
+  image       String?
+  slug        String    // slug from RAWG API    
   description String    @db.Text()
   startMonth  DateTime  @map("start_month")
   endMonth    DateTime? @map("end_month")
