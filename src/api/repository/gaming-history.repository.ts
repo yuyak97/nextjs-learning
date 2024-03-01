@@ -5,7 +5,7 @@ import { hashIds } from "@/lib/hash"
 export const getUserGamingHistory = async (email: string) => {
   return prisma.user.findFirst({
     where: { email },
-    include: { gamingHistories: { orderBy: { startMonth: "asc" } } },
+    include: { gamingHistories: { orderBy: { startMonth: "desc" } } },
   })
 }
 
