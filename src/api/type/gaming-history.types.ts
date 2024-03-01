@@ -15,5 +15,5 @@ export type GamingHistoryCreateBodyWithUserId = GamingHistoryCreateBody & {
 
 export type GamingHistoryResponse = Pick<
   GamingHistory,
-  "title" | "publicId" | "startMonth" | "endMonth" | "description"
+  "title" | "publicId" | "startMonth" | "endMonth" | "description" | "image"
 >

@@ -31,7 +31,7 @@ const GamingHistoryTimeLine: React.FC<Props> = ({ gamingHistories }) => {
                   className="rounded-full object-cover"
                 />
               )}
-              <div className="flex flex-col space-y-2 text-wrap">
+              <div className="min-w-0 space-y-2 break-words">
                 <h2 className="break-words text-lg font-bold text-gray-800 dark:text-gray-200">
                   {title}
                 </h2>
@@ -46,20 +46,9 @@ const GamingHistoryTimeLine: React.FC<Props> = ({ gamingHistories }) => {
                     </time>
                   )}
                 </div>
-                <p
-                  className="break-words text-gray-600 dark:text-gray-300"
-                  style={{
-                    overflowWrap: "break-word",
-                    textOverflow: "ellipsis",
-                    overflow: "hidden",
-                    display: "-webkit-box",
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: "vertical",
-                  }}
-                >
-                  asdjadsajdjakljdskaljdksaljdklsajdksaljdksaldjlakjdkaljdklajdkaljdakldasjhdhaskhdsajkhdajkhdjkahdjksahdjakhdjakhdjskahdajkk
-                  {/* {description} */}
-                </p>
+                <div className="text-gray-600 dark:text-gray-300">
+                  {description}
+                </div>
               </div>
             </div>
           )

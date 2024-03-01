@@ -94,9 +94,13 @@ const AddGameModal: React.FC<Props> = ({ isModalOpen, handleCloseModal }) => {
                   <div
                     onClick={() => selectGame(game)}
                     key={index}
-                    className="cursor-pointer px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
+                    className="flex w-full cursor-pointer justify-between px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600"
                   >
-                    {game.name}
+                    <div>{game.name}</div>
+                    <div>
+                      {game.released &&
+                        formatDateString(new Date(game.released), "yyyy/mm/dd")}
+                    </div>
                   </div>
                 ))}
               </div>
