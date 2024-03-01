@@ -12,54 +12,30 @@ const Home: React.FC<DefaultPageProps> = ({ params: { lng } }) => {
   if (languages.indexOf(lng) < 0) {
     lng = fallbackLng
   }
-  const { t } = useTranslation(lng, "common")
+  const { t } = useTranslation(lng, "top-page")
 
   return (
     <>
       <Hero lng={lng} />
-      <Link href={`/${lng}/second-page`}>{t("to-second-page")}</Link>
-      <Image
-        alt="hero"
-        src={ArcadeImage}
-        placeholder="blur"
-        width={120}
-        height={120}
-      />
-      <Image
-        alt="hero"
-        src={ArcadeImage}
-        placeholder="blur"
-        width={120}
-        height={120}
-      />
-      <Image
-        alt="hero"
-        src={ArcadeImage}
-        placeholder="blur"
-        width={120}
-        height={120}
-      />
-      <Image
-        alt="hero"
-        src={ArcadeImage}
-        placeholder="blur"
-        width={120}
-        height={120}
-      />
-      <Image
-        alt="hero"
-        src={ArcadeImage}
-        placeholder="blur"
-        width={120}
-        height={120}
-      />
-      <Image
-        alt="hero"
-        src={ArcadeImage}
-        placeholder="blur"
-        width={120}
-        height={120}
-      />
+      <section className="container mx-auto max-w-2xl px-4 py-8">
+        <div className="grid items-center gap-4 md:grid-cols-2">
+          <div>
+            <p className="text-center text-lg font-semibold text-gray-700 dark:text-gray-300 md:text-xl">
+              {t("TopPage.description")}
+            </p>
+          </div>
+          <div className="flex items-center justify-center overflow-hidden rounded-lg">
+            <Image
+              alt="arcade"
+              src={ArcadeImage}
+              placeholder="blur"
+              className="rounded-lg object-cover"
+              width={200}
+              height={120}
+            />
+          </div>
+        </div>
+      </section>
     </>
   )
 }
