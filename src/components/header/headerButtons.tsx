@@ -92,7 +92,6 @@ const HeaderButtons: React.FC<Props> = ({ lng }) => {
                 <Link href="/profile">
                   <div className="py-2">Profile</div>
                 </Link>
-                <div className="py-2">Settings</div>
                 <div className="cursor-pointer py-2" onClick={() => signOut()}>
                   Sign out
                 </div>
