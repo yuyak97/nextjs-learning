@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   app:
-    container_name: book-app
+    container_name: game-app
     build:
       context: .
     ports:
@@ -13,12 +13,12 @@ services:
       - db
   db:
     build: local/db
-    container_name: book-db
+    container_name: game-db
     environment:
       TZ: Europe/Paris
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: book
+      POSTGRES_DB: game
       POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=en_US.UTF-8"
     volumes:
       - db:/var/lib/postgresql/data
