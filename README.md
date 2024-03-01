@@ -1,6 +1,8 @@
 ## About this repository
 
-This is a repository to learn Next.js. In order to learn it by myself, I implemented gaming history sharing application.
+This is a repository for learning Next.js. In order to learn it by myself, I implemented a gaming history sharing application.
+
+While I have extensive experience with React, I hadn't had the opportunity to work with Next.js before. Therefore, I wanted to give it a try.
 
 ![use flow](./readme-asset/flow.gif)
 
