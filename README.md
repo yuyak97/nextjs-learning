@@ -1,54 +1,82 @@
-## DB
+## About this repository
 
-```bash
-# access db
-docker exec -it book-db psql -U postgres book
+This is a repository to learn Next.js. In order to learn it by myself, I implemented gaming history sharing application.
 
-# open prisma studio
-npx prisma studio
-```
+![use flow](./readme-asset/flow.gif)
 
-## RAWG API
+### What I implemented
 
-- [rawg api official](https://rawg.io/apidocs)
-- [api key info](https://rawg.io/@yuyak/apikey)
-- [document](https://api.rawg.io/docs/#tag/games)
+- ✅ Styled by tailwind since I didn't have the experience of tailwind.
 
-https://github.com/i18next/next-app-dir-i18next-example-ts/tree/main/app/%5Blng%5D
+- ✅ Implemented auth with next-auth
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+- ✅ implemented multi language with i18n (en, fr). Users can change their language on the app. The URL `/en` is in English and `/fr` is in French
+
+<details>
+<summary>screenshot</summary>
+
+| EN                               | FR                               |
+| -------------------------------- | -------------------------------- |
+| ![EN](./readme-asset/top_en.png) | ![FR](./readme-asset/top_fr.png) |
+
+</details>
+<br/>
+
+- ✅ Light and dark mode with toggle.
+
+<details>
+<summary>screenshot</summary>
+
+| light                                             | dark                                       |
+| ------------------------------------------------- | ------------------------------------------ |
+| ![light](./readme-asset/profile-screen-light.png) | ![dark](./readme-asset/profile-screen.png) |
+
+</details>
+<br/>
+
+- ✅ Simple GDPR consent banner
+
+<details>
+<summary>screenshot</summary>
+
+![banner](./readme-asset/gdpr-consent.png)
+
+</details>
+<br/>
+
+- ✅ implemented APIs with prisma orm
 
 ## Getting Started
 
-First, run the development server:
+1. create .env from .env.local.example
+2. Run these command below.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ npm install
+# start containers
+$ docker compose up
+# deploy tables
+$ docker exec -it game-app npm run prisma:migrate-deploy
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## DB
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+# access db
+docker exec -it game-db psql -U postgres game
+```
 
-## Learn More
+## Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+## RAWG API
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+RAWG is a game database API. Please get rawg API key in order to get data from.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [rawg api official](https://rawg.io/apidocs)
+- [document](https://api.rawg.io/docs/#tag/games)
 
-## Deploy on Vercel
+## Google client auth
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+As for sign in feature, this app requires to set GOOGLE_CLIENT_ID and GOOGLE_SECRET in .env, thus, please create them on GCP.
